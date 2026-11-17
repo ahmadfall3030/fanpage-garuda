@@ -1,0 +1,679 @@
+
+/* =========================
+   RESET & PENGATURAN DASAR
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #ff003c;
+    --red-neon: #ff1744;
+    --red-dark: #700018;
+    --black: #080808;
+    --gray: #151515;
+    --white: #f5f5f5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    color: var(--white);
+
+    background-color: var(--black);
+    background-image:
+        linear-gradient(#1d1d1d 1px, transparent 1px),
+        linear-gradient(90deg, #1d1d1d 1px, transparent 1px),
+        radial-gradient(
+            circle at top,
+            #35000c 0%,
+            #100006 40%,
+            #080808 75%
+        );
+
+    background-size: 35px 35px, 35px 35px, 100% 100%;
+    background-attachment: fixed;
+}
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 7%;
+    background: rgba(8, 8, 8, 0.95);
+
+    border-bottom: 2px solid var(--red);
+
+    box-shadow:
+        0 3px 15px rgba(255, 0, 60, 0.35),
+        0 0 30px rgba(255, 0, 60, 0.12);
+
+    backdrop-filter: blur(12px);
+}
+
+/* LOGO */
+.navbar-logo {
+    color: var(--red-neon);
+    font-size: 27px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 5px var(--red),
+        0 0 12px var(--red),
+        0 0 25px rgba(255, 0, 60, 0.7);
+}
+
+/* MENU LINKS */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    list-style: none;
+}
+
+.navbar-links li {
+    position: relative;
+}
+
+.navbar-links li a {
+    display: block;
+    padding: 12px 18px;
+
+    color: #eeeeee;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+/* HOVER NAVBAR */
+.navbar-links li a:hover {
+    color: white;
+    background: var(--red);
+
+    box-shadow:
+        0 0 8px var(--red),
+        0 0 18px rgba(255, 0, 60, 0.7);
+
+    text-shadow: 0 0 5px white;
+}
+
+/* =========================
+   DROPDOWN PLAYER
+========================= */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+
+    padding: 8px;
+
+    background: #101010;
+    border: 1px solid var(--red);
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 60, 0.5),
+        0 10px 25px rgba(0, 0, 0, 0.8);
+
+    z-index: 1001;
+}
+
+/* DROPDOWN MUNCUL SAAT HOVER */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ISI DROPDOWN */
+.dropdown-content a {
+    display: block;
+    margin: 3px 0;
+    padding: 12px 15px;
+
+    color: white;
+    text-decoration: none;
+    text-transform: none;
+    font-size: 13px;
+
+    border-radius: 4px;
+}
+
+.dropdown-content a:hover {
+    background: var(--red);
+    color: white;
+}
+
+/* =========================
+   KONTEN UTAMA & HISTORY
+========================= */
+.content, .History {
+    width: min(850px, 88%);
+    margin: 100px auto;
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background: rgba(10, 10, 10, 0.88);
+    border: 1px solid #4d0014;
+    border-top: 3px solid var(--red);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 60, 0.15),
+        inset 0 0 25px rgba(255, 0, 60, 0.04);
+}
+
+/* JUDUL */
+.content h1, .History h1 {
+    margin-bottom: 20px;
+
+    color: var(--red-neon);
+    font-size: clamp(40px, 7vw, 65px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 5px var(--red),
+        0 0 15px var(--red),
+        0 0 35px rgba(255, 0, 60, 0.8);
+}
+
+/* PARAGRAF */
+.content p, .History p {
+    color: #c9c9c9;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* POSISI SCROLL HISTORY */
+#History {
+    scroll-margin-top: 120px;
+}
+
+/* =========================
+   PLAYER IMAGE SLIDER
+========================= */
+.player-gallery {
+    display: flex;
+    gap: 20px;
+
+    width: 100%;
+    padding: 20px 5px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+/* UKURAN GAMBAR */
+.player-gallery img {
+    flex: 0 0 220px;
+
+    width: 220px;
+    height: 280px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 12px;
+    border: 2px solid #700018;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 60, 0.2);
+
+    scroll-snap-align: start;
+    scroll-margin-top: 170px;
+
+    transition: 0.3s ease;
+}
+
+/* EFEK HOVER GAMBAR */
+.player-gallery img:hover {
+    transform: scale(1.04);
+
+    border-color: var(--red-neon);
+
+    box-shadow:
+        0 0 10px var(--red),
+        0 0 25px rgba(255, 0, 60, 0.5);
+}
+
+/* SCROLLBAR GALERI */
+.player-gallery::-webkit-scrollbar {
+    height: 8px;
+}
+
+.player-gallery::-webkit-scrollbar-track {
+    background: #151515;
+    border-radius: 10px;
+}
+
+.player-gallery::-webkit-scrollbar-thumb {
+    background: #8b0021;
+    border-radius: 10px;
+}
+
+.player-gallery::-webkit-scrollbar-thumb:hover {
+    background: var(--red-neon);
+}
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+.navbar-checkbox {
+    display: none;
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+
+    padding: 8px;
+    cursor: pointer;
+}
+
+.navbar-toggle .bar {
+    display: block;
+    width: 28px;
+    height: 3px;
+
+    background: var(--red-neon);
+    border-radius: 5px;
+
+    box-shadow: 0 0 8px var(--red);
+    transition: 0.3s;
+}
+
+/* =========================
+   TAMPILAN HP / TABLET
+========================= */
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 18px 5%;
+        flex-wrap: wrap;
+    }
+
+    .navbar-logo {
+        font-size: 22px;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+
+        width: 100%;
+        padding-top: 18px;
+    }
+
+    /* HAMBURGER DIBUKA */
+    .navbar-checkbox:checked ~ .navbar-links {
+        display: flex;
+    }
+
+    .navbar-links li a {
+        padding: 14px;
+        text-align: center;
+        background: #111111;
+        border: 1px solid #26000a;
+    }
+
+    /* DROPDOWN MOBILE */
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        max-height: 250px;
+        margin-top: 5px;
+
+        background: #1b0007;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* KONTEN MOBILE */
+    .content, .History {
+        margin: 60px auto;
+        padding: 40px 20px;
+    }
+
+    .content p, .History p {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+
+    /* GAMBAR MOBILE */
+    .player-gallery img {
+        flex: 0 0 170px;
+
+        width: 170px;
+        height: 230px;
+    }
+}
+
+/* =========================
+   EFEK SCROLLBAR UTAMA
+========================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8b0021;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--red-neon);
+}
+
+
+/* =========================
+   AUTHOR SECTION
+   DARK RED GARUDA THEME
+========================= */
+
+.author-section {
+    width: min(1000px, 88%);
+    margin: 100px auto;
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background: rgba(10, 10, 10, 0.88);
+    border: 1px solid #4d0014;
+    border-top: 3px solid var(--red);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 60, 0.15),
+        inset 0 0 25px rgba(255, 0, 60, 0.04);
+}
+
+/* JUDUL AUTHOR */
+
+.author-section h1 {
+    margin-bottom: 15px;
+
+    color: var(--red-neon);
+    font-size: clamp(35px, 6vw, 50px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 5px var(--red),
+        0 0 15px var(--red),
+        0 0 35px rgba(255, 0, 60, 0.8);
+}
+
+.author-subtitle {
+    color: #c9c9c9;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* CARD AUTHOR */
+
+.author-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+
+    padding: 30px;
+
+    text-align: left;
+
+    background: rgba(8, 8, 8, 0.95);
+    border: 1px solid var(--red-dark);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 12px rgba(255, 0, 60, 0.15);
+
+    transition: 0.3s ease;
+}
+
+.author-card:hover {
+    border-color: var(--red-neon);
+
+    box-shadow:
+        0 0 10px var(--red),
+        0 0 25px rgba(255, 0, 60, 0.3);
+}
+
+/* FOTO PROFIL */
+
+.author-photo img {
+    width: 180px;
+    height: 180px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 50%;
+    border: 3px solid var(--red);
+
+    box-shadow:
+        0 0 10px var(--red),
+        0 0 20px rgba(255, 0, 60, 0.35);
+}
+
+/* INFORMASI AUTHOR */
+
+.author-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.author-info h2 {
+    color: var(--red-neon);
+    font-size: 28px;
+    font-weight: 900;
+
+    text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+}
+
+.author-role {
+    color: #999;
+    margin: 8px 0 18px;
+    font-size: 14px;
+}
+
+.author-description {
+    color: #c9c9c9;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* SUBJUDUL */
+
+.author-info h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+
+    color: var(--red-neon);
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid var(--red-dark);
+}
+
+/* IDENTITAS DIRI */
+
+.author-detail p {
+    color: #c9c9c9;
+    font-size: 15px;
+    margin: 12px 0;
+}
+
+.author-detail strong {
+    color: var(--red-neon);
+}
+
+/* SKILLS */
+
+.author-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.author-skills span {
+    padding: 9px 16px;
+
+    color: #eeeeee;
+    background: #151515;
+
+    border: 1px solid var(--red-dark);
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.author-skills span:hover {
+    color: white;
+    background: var(--red);
+
+    box-shadow:
+        0 0 8px var(--red),
+        0 0 18px rgba(255, 0, 60, 0.5);
+}
+
+/* CONTACT */
+
+.author-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.author-contact a {
+    display: inline-block;
+    padding: 11px 20px;
+
+    color: #eeeeee;
+    background: #151515;
+
+    border: 1px solid var(--red-dark);
+    border-radius: 5px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+.author-contact a:hover {
+    color: white;
+    background: var(--red);
+
+    box-shadow:
+        0 0 8px var(--red),
+        0 0 18px rgba(255, 0, 60, 0.7);
+}
+
+/* POSISI SCROLL AUTHOR */
+
+#Author {
+    scroll-margin-top: 120px;
+}
+
+/* =========================
+   RESPONSIVE AUTHOR
+========================= */
+
+@media (max-width: 768px) {
+
+    .author-section {
+        margin: 60px auto;
+        padding: 40px 20px;
+    }
+
+    .author-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 20px;
+
+        text-align: center;
+    }
+
+    .author-photo img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .author-info {
+        width: 100%;
+    }
+
+    .author-info h2 {
+        font-size: 24px;
+    }
+
+    .author-description {
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    .author-skills,
+    .author-contact {
+        justify-content: center;
+    }
+}
